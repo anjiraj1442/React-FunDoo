@@ -3,7 +3,7 @@ import TextField from "@mui/material/TextField";
 import { FormHelperText } from "@mui/material";
 import { Checkbox } from "@mui/material";
 import FormControlLabel from "@mui/material/FormControlLabel";
-
+import logo from "../../images/logo.png";
 import "./Reg.css";
 
 export class Reg extends Component {
@@ -68,12 +68,11 @@ export class Reg extends Component {
             </p>
           </div>
         </div>
-
-        <div className="img">
-          
-          <img src="logo.png" alt="logo" />
+        <div className="image" >
+          {" "}
+          <img class="logo-image" src={logo} alt="logo" />{" "}
+          <span>One account. All of Fundoo working for you.</span>
         </div>
-        <span>One account. All of Fundoo working for you.</span>
       </form>
     );
   }
