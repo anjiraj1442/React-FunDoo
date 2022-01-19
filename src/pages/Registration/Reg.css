@@ -1,0 +1,88 @@
+.form {
+  font-size: 14px;
+  line-height: 1.4286;
+  color: #121314;
+  font-family: roboto, "Noto Sans Myanmar UI", arial, sans-serif;
+  border: 1px solid #dadce0;
+  margin-left: 12%;
+  margin-right: 12%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  text-align: left;
+}
+.login-form{
+  display: flex;
+}
+
+a {
+  text-decoration: none;
+  font-size: 16px;
+  color: #1a73e8;
+  margin-left: 30px;
+}
+.singup-container {
+  display: flex;
+
+  margin-bottom: 10px;
+  margin-left: 35px;
+  width: 40%;
+}
+.firstname {
+  margin-right: 25px;
+}
+
+#firstname {
+  width: 170px;
+  height: 10px;
+}
+#lastname {
+  width: 170px;
+  height: 10px;
+}
+
+.email-link {
+  margin-bottom: 50px;
+  margin-top: 20px;
+}
+
+.next-container {
+  display: grid;
+}
+.sign-in-instead {
+  float: left;
+  margin-top: -70px;
+  margin-bottom: 50px;
+}
+#username {
+  width: 400px;
+  height: 10px;
+}
+.username {
+  margin-left: 33px;
+}
+.password {
+  margin-right: 25px;
+}
+#password {
+  width: 170px;
+  height: 10px;
+}
+#confirmpassword {
+  width: 170px;
+  height: 10px;
+}
+
+.next-btn {
+  margin-left: 70vh;
+  float: right;
+  width: 10%;
+  padding: 10px;
+  background-color: #1a73e8;
+  color: white;
+  font: 200;
+  margin-bottom: 60px;
+}
+
+h2 {
+  margin-left: 8vh;
+}
