@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import '../login/Log.css'
+import '../login/Login.css'
 import { TextField } from "@material-ui/core";
 
-export class Log extends Component {
+export class Login extends Component {
     render() {
         return (
             <div className="login-main-page">
@@ -43,4 +43,4 @@ export class Log extends Component {
     }
 }
 
-export default Log
+export default Login
