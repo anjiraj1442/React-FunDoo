@@ -4,11 +4,63 @@ import { FormHelperText } from "@mui/material";
 import { Checkbox } from "@mui/material";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Button from "@mui/material/Button";
-import "./SignUp.css";
+import "./SignUp.scss";
 import logo from "../../images/logo.png";
+//import axios from "axios";
 
 export class SignUp extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      firstName: "",
+      lastName: "",
+      firstnameError: "",
+      lastnameError: "",
+      emailAddress: "",
+      emailAddressError: "",
+      PassWord: "",
+      PassWordError: "",
+      confirmPassword:"",
+      confirmpasswordError:"",
+
+    };
+  }
+  changeHandle = (e) => {
+    console.log(e.target.value);
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  };
+  validation = () => {
+    let isError = false;
+    const error = this.state;
+    error.firstnameError = this.state.firstName === "" ? true : false;
+    error.lastnameError = this.state.lastName === "" ? true : false;
+    error.emailAddressError = this.state.emailAddress === "" ? true : false;
+    error.PassWordError = this.state.PassWord === "" ? true : false;
+    error.confirmpasswordError = this.state.confirmPassword === "" ? true : false;
+    this.setState({
+      ...error,
+    });
+    return (isError =
+      error.firstnameError ||
+      error.lastnameError ||
+      error.emailAddressError ||
+      error.PassWordError ||
+      error.confirmpasswordError );
+  };
+
+  next = () => {
+    var validated = this.validation();
+    if (validated) {
+      console.log("Validation Completed");
+    } else {
+      console.log("somethingmissing");
+    }
+  };
+
   render() {
+    console.log(this.state);
     return (
       <div className="Signup-container">
         <div className="left-side">
@@ -26,29 +78,47 @@ export class SignUp extends Component {
             <div className="text-field">
               <div className="fname">
                 <TextField
+                  name="firstName"
                   id="firstname"
                   label="First Name"
                   type="password"
                   variant="outlined"
+                  error={this.state.firstnameError}
+                  helperText={
+                    this.state.firstnameError ? "First Name required" : " "
+                  }
+                  onChange={(e) => this.changeHandle(e)}
                 />
               </div>
               <div className="lname">
                 <TextField
+                  name="lastName"
                   id="lastname"
                   label="Last Name"
                   type="password"
                   variant="outlined"
+                  error={this.state.lastnameError}
+                  helperText={
+                    this.state.lastnameError ? "Last Name required" : " "
+                  }
+                  onChange={(e) => this.changeHandle(e)}
                 />
               </div>
             </div>
             <div className="Email">
               <TextField
+                name="emailAddress"
                 id="email"
                 label="Email"
                 type="password"
                 variant="outlined"
                 helperText="You can use letters,numbers and periods"
                 fullWidth
+                error={this.state.emailAddressError}
+                helperText={
+                  this.state.emailAddressError ? "Email required" : " "
+                }
+                onChange={(e) => this.changeHandle(e)}
               />
             </div>
             <div className="use_email">
@@ -57,19 +127,31 @@ export class SignUp extends Component {
             <div className="data">
               <div>
                 <TextField
+                  name="PassWord"
                   id="password"
                   label="Password"
                   type="password"
                   variant="outlined"
-                  //helperText="You can use letters,numbers and periods"
+                  helperText="You can use letters,numbers and periods"
+                  error={this.state.PassWordError}
+                  helperText={
+                    this.state.PassWordError ? "Password required" : " "
+                  }
+                  onChange={(e) => this.changeHandle(e)}
                 />
               </div>
               <div className="cpassword">
                 <TextField
+                  name="confirPmassword"
                   id="confirmpassword"
                   label="Confirm Password"
                   type="password"
                   variant="outlined"
+                  error={this.state.confirmpasswordError}
+                  helperText={
+                    this.state.confirmpasswordError ? " Confirm Password required" : " "
+                  }
+                  onChange={(e) => this.changeHandle(e)}
                 />
               </div>
             </div>
@@ -91,7 +173,9 @@ export class SignUp extends Component {
                 Sign in instead{" "}
               </a>
             </div>
-            <Button variant="contained">Next</Button>
+            <Button variant="contained" onClick={this.next}>
+              Next
+            </Button>
           </div>
         </div>
 
