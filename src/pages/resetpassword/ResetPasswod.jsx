@@ -33,7 +33,7 @@ export class Reserpassword extends Component {
     if (validated) {
       console.log("Validation Completed");
     } else {
-      console.log("somethingmissing");
+      console.log("something missing");
     }
   };
 
@@ -86,7 +86,7 @@ export class Reserpassword extends Component {
 
         <div className="skiptype">
           <a href="" className="skip">
-            Skip
+            <h4>Skip</h4>
           </a>
         </div>
 

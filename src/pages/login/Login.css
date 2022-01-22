@@ -1,8 +1,54 @@
+<<<<<<< HEAD
 .Box-class{
   position: relative;
+=======
+.login-main-page {
+  margin: 35px auto;
+  border-radius: 8px;
+  border: 1px solid #b0b4bd;
+  height: 500px;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+
+  padding: 10px 20px;
+}
+.second-content {
+  margin-bottom: 15px;
+}
+
+.third-content {
+  display: flex;
+  flex-flow: column;
+  height: 90px;
+}
+.not {
+  margin-top: -5px;
+}
+.learn {
+  margin-right: 200px;
+  margin-top: -15px;
+  color: blue;
+  text-decoration: none;
+}
+#more {
+  margin-right: 273px;
+}
+#next {
+  background-color: blue;
+  color: white;
+  height: 35px;
+  width: 70px;
+  border-radius: 4px;
+  font-size: 16px;
+}
+.fourth-content {
+>>>>>>> resetpassword
   display: flex;
   justify-content: center;
   align-items: center;
+<<<<<<< HEAD
   margin-top: 100px;
 }
 .form-class{
@@ -39,6 +85,14 @@
   justify-content: center;
   margin-bottom: 20px;
 
+=======
+  justify-content: space-between;
+}
+.create {
+  color: blue;
+  font-size: px;
+  text-decoration: none;
+>>>>>>> resetpassword
 }
 .password{
   margin-bottom: 20px;
