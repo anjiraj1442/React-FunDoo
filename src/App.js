@@ -10,9 +10,15 @@ function App() {
   return (
     <div className="App">
      {/* <Login /> */}
+<<<<<<< HEAD
       <SignUp/>
       {/* <ForgotPass/> */}
       {/* <ResetPassword/> */}
+=======
+      {/* <SignUp/> */}
+      {/* <ForgotPass/> */}
+      <ResetPassword/>
+>>>>>>> 8f83fceb10f2371f7f8a0bda0f6ddfe1c22081a8
     </div>
   );
 }
