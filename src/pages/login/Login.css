@@ -1,78 +1,51 @@
 .login-main-page {
-  width: 100%;
-  font-size: small;
+  margin: 35px auto;
+  border-radius: 8px;
+  border: 1px solid #b0b4bd;
+  height: 500px;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+
+  padding: 10px 20px;
+}
+.second-content {
+  margin-bottom: 15px;
+}
+
+.third-content {
+  display: flex;
+  flex-flow: column;
+  height: 90px;
+}
+.not {
+  margin-top: -5px;
+}
+.learn {
+  margin-right: 200px;
+  margin-top: -15px;
+  color: blue;
+  text-decoration: none;
+}
+#more {
+  margin-right: 273px;
+}
+#next {
+  background-color: blue;
+  color: white;
+  height: 35px;
+  width: 70px;
+  border-radius: 4px;
+  font-size: 16px;
+}
+.fourth-content {
   display: flex;
   align-items: center;
-  
- 
+  justify-content: space-between;
 }
-
-.login-content {
-  justify-content: center;
-  padding: 1.5vh;
-  width: 25%;
-  height: 65vh;
-  border: 1px solid black;
-  background-color: white;
-  border-radius: 10px;
-  margin: 0 auto;
-  margin-top: 40px;
-}
-
-.first-content {
-  justify-content: center;
-}
-
-.Fundoo {
-  display: flex;
-  font-size: 25px;
-  margin-top: -20px;
-  
-}
-
-.sign-in {
-  font-size: 25px;
-  padding-bottom: 10px;
-}
-
-.account {
-  /* background-color: black; */
-  font-size: 20px;
-  margin: -1vh 0vw 3vh 0vw;
-}
-
-.email {
-  font-size: 0px;
-  padding: 0px;
-}
-
-
-.text {
-  font-size: 15px;
-}
-
-.learnmore {
-  color: blue;
-}
-
 .create {
-  display: flex;
-  margin: 0vh 2vw;
-}
-
-.c-text {
   color: blue;
-
-  font-size: 15px;
-}
-
-.c-next {
-  color: whitesmoke;
-
-  margin: 0vh 0vw;
-  background-color: blue;
-}
-
-.box {
-  margin: 2vh 0vw 0vh 10vw;
+  font-size: px;
+  text-decoration: none;
 }
