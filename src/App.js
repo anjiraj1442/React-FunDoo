@@ -11,8 +11,8 @@ function App() {
     <div className="App">
      {/* <Login /> */}
       {/* <SignUp/> */}
-      <ForgotPass/>
-      {/* <ResetPassword/> */}
+      {/* <ForgotPass/> */}
+      <ResetPassword/>
     </div>
   );
 }
