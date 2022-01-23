@@ -63,7 +63,7 @@ export class Reserpassword extends Component {
             autoFocus="true"
             error={this.state.NewpasswordError}
             helperText={
-              this.state.NewpasswordError ? "First Name required" : " "
+              this.state.NewpasswordError ? " password is required" : " "
             }
             onChange={(e) => this.changeHandle(e)}
           />
@@ -78,7 +78,7 @@ export class Reserpassword extends Component {
             size="small"
             error={this.state.ConfirmPassWordError}
             helperText={
-              this.state.ConfirmPassWordError ? "First Name required" : " "
+              this.state.ConfirmPassWordError ? "password is required" : " "
             }
             onChange={(e) => this.changeHandle(e)}
           />

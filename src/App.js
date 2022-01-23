@@ -9,10 +9,10 @@ import ResetPassword from './pages/resetpassword/ResetPasswod'
 function App() {
   return (
     <div className="App">
-     <Login />
+     {/* <Login /> */}
       {/* <SignUp/> */}
       {/* <ForgotPass/> */}
-      {/* <ResetPassword/> */}
+      <ResetPassword/>
     </div>
   );
 }
