@@ -11,6 +11,12 @@ function App() {
     <div className="App">
 <<<<<<< HEAD
      {/* <Login /> */}
+      {/* <SignUp/> */}
+     {/* <ForgotPass/>  */}
+      <ResetPassword/>
+=======
+<<<<<<< HEAD
+     {/* <Login /> */}
 <<<<<<< HEAD
       <SignUp/>
       {/* <ForgotPass/> */}
@@ -26,6 +32,7 @@ function App() {
       {/* <ForgotPass/> */}
       {/* <ResetPassword/> */}
 >>>>>>> resetpassword
+>>>>>>> 060d24a598e659c8740577250e8a6d59725ef9ae
     </div>
   );
 }

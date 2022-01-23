@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 import "../login/Login.css";
 import { TextField } from "@material-ui/core";
+<<<<<<< HEAD
+import axios from "axios";
+=======
 import Button from "@mui/material/Button";
 
+>>>>>>> 060d24a598e659c8740577250e8a6d59725ef9ae
 export class Login extends Component {
 <<<<<<< HEAD
   render() {
@@ -37,6 +41,19 @@ export class Login extends Component {
       return (isError = error.emailaddressError || error.passwordError);
     };
     next = () => {
+      let data = {
+        
+        "email":"anjirajardula@gmail.com",
+        "password":"12345"
+        
+      }
+      axios.post("http://fundoonotes.incubation.bridgelabz.com/api/user/login",data)
+      .then((res)=>{
+        console.log(res);
+      })
+      .catch(()=>{
+  
+      })
       var validated = this.validation();
       if (validated) {
         console.log("Validation Completed");

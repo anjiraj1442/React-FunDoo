@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import TextField from "@mui/material/TextField";
 import "./ResetPassword.css";
 import Button from "@mui/material/Button";
+import axios from "axios";
 export class Reserpassword extends Component {
   constructor(props) {
     super(props);
@@ -29,6 +30,24 @@ export class Reserpassword extends Component {
     return (isError = error.NewpasswordError || error.ConfirmPassWordError);
   };
   next = () => {
+    let data = {
+       
+      "password":"123456789",
+      
+    }
+    axios.post("http://fundoonotes.incubation.bridgelabz.com/api/user/reset-password",data)
+    .then((res)=>{
+      console.log(res);
+    })
+    .catch(()=>{
+
+    })
+    var validated = this.validation();
+    if (validated) {
+      console.log("Validation Completed");
+    } else {
+      console.log("somethingmissing");
+    }
     var validated = this.validation();
     if (validated) {
       console.log("Validation Completed");
@@ -63,7 +82,7 @@ export class Reserpassword extends Component {
             autoFocus="true"
             error={this.state.NewpasswordError}
             helperText={
-              this.state.NewpasswordError ? "First Name required" : " "
+              this.state.NewpasswordError ? " password is required" : " "
             }
             onChange={(e) => this.changeHandle(e)}
           />
@@ -78,7 +97,7 @@ export class Reserpassword extends Component {
             size="small"
             error={this.state.ConfirmPassWordError}
             helperText={
-              this.state.ConfirmPassWordError ? "First Name required" : " "
+              this.state.ConfirmPassWordError ? "password is required" : " "
             }
             onChange={(e) => this.changeHandle(e)}
           />
