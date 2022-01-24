@@ -6,7 +6,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Button from "@mui/material/Button";
 import "./SignUp.scss";
 import logo from "../../images/logo.png";
-//import axios from "axios";
+import axios from "axios";
 
 export class SignUp extends Component {
   constructor(props) {
@@ -51,6 +51,20 @@ export class SignUp extends Component {
   };
 
   next = () => {
+    let data = {
+      "firstName":"anji",
+      "lastName":"raj",
+      "email":"anjirajardula1@gmail.com",
+      "password":"123456",
+      "service":"advance"
+    }
+    axios.post("http://fundoonotes.incubation.bridgelabz.com/api/user/userSignUp",data)
+    .then((res)=>{
+      console.log(res);
+    })
+    .catch(()=>{
+
+    })
     var validated = this.validation();
     if (validated) {
       console.log("Validation Completed");

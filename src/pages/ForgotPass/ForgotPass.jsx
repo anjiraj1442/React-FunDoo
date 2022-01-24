@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import TextField from "@mui/material/TextField";
 import "./ForgotPass.css";
 import Button from "@mui/material/Button";
+import axios from "axios";
 export class ForgotPass extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -26,6 +28,18 @@ export class ForgotPass extends Component {
     return (isError = error.emailaddressError);
   };
   next = () => {
+    let data = {
+        
+      "email":"anjirajardula@gmail.com",
+      
+    }
+    axios.post("http://fundoonotes.incubation.bridgelabz.com/api/user/reset",data)
+    .then((res)=>{
+      console.log(res);
+    })
+    .catch(()=>{
+
+    })
     var validated = this.validation();
     if (validated) {
       console.log("Validation Completed");
