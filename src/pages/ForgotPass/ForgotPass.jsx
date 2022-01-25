@@ -3,13 +3,16 @@ import TextField from "@mui/material/TextField";
 import "./ForgotPass.css";
 import Button from "@mui/material/Button";
 import axios from "axios";
-export class ForgotPass extends Component {
+import { Link } from "react-router-dom";
+import UserService from "../../servises/UserService";
+const userService = new UserService();
 
+export class ForgotPass extends Component {
   constructor(props) {
     super(props);
     this.state = {
       emailaddress: "",
-      emailaddressError:"",
+      emailaddressError: "",
     };
   }
   changeHandle = (e) => {
@@ -29,17 +32,14 @@ export class ForgotPass extends Component {
   };
   next = () => {
     let data = {
-        
-      "email":"anjirajardula@gmail.com",
-      
-    }
-    axios.post("http://fundoonotes.incubation.bridgelabz.com/api/user/reset",data)
-    .then((res)=>{
-      console.log(res);
-    })
-    .catch(()=>{
-
-    })
+      email: this.state.emailaddress,
+    };
+    userService
+      .Forget(data)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch(() => {});
     var validated = this.validation();
     if (validated) {
       console.log("Validation Completed");
@@ -71,10 +71,16 @@ export class ForgotPass extends Component {
             size="small"
             autoFocus="true"
             error={this.state.emailaddressError}
-            helperText={this.state.emailaddressError ? "First Name required" : " "}
+            helperText={
+              this.state.emailaddressError ? "First Name required" : " "
+            }
             onChange={(e) => this.changeHandle(e)}
           />
         </div>
+        <Link to="/login">
+          <p>Sign in instead</p>{" "}
+        </Link>
+
         <div className="next-button">
           <Button variant="contained" size="small" onClick={this.next}>
             Next

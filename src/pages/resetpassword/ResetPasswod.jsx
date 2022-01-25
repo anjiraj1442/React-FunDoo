@@ -3,6 +3,8 @@ import TextField from "@mui/material/TextField";
 import "./ResetPassword.css";
 import Button from "@mui/material/Button";
 import axios from "axios";
+import UserService from "../../servises/UserService";
+const userService = new UserService();
 export class Reserpassword extends Component {
   constructor(props) {
     super(props);
@@ -32,10 +34,11 @@ export class Reserpassword extends Component {
   next = () => {
     let data = {
        
-      "password":"123456",
+      "password":this.state.Newpassword
       
     }
-    axios.post("http://fundoonotes.incubation.bridgelabz.com/api/user/reset-password",data)
+    userService
+      .Reset(data)
     .then((res)=>{
       console.log(res);
     })

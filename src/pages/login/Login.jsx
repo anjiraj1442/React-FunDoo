@@ -2,53 +2,56 @@ import React, { Component } from "react";
 import "../login/Login.css";
 import { TextField } from "@material-ui/core";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import UserService from "../../servises/UserService";
+const userService = new UserService();
 export class Login extends Component {
   constructor(props) {
-      super(props);
-      this.state = {
-        emailaddress: "",
-        emailaddressError:"",
-        passWord:"",
-        passwordError:""
-      };
-    }
-    changeHandle = (e) => {
-      console.log(e.target.value);
-      this.setState({
-        [e.target.name]: e.target.value,
-      });
+    super(props);
+    this.state = {
+      emailaddress: "",
+      emailaddressError: "",
+      passWord: "",
+      passwordError: "",
     };
-    validation = () => {
-      let isError = false;
-      const error = this.state;
-      error.emailaddressError = this.state.emailaddress === "" ? true : false;
-      error.passwordError = this.state.passWord === "" ? true : false;
-      this.setState({
-        ...error,
-      });
-      return (isError = error.emailaddressError || error.passwordError);
+  }
+  changeHandle = (e) => {
+    console.log(e.target.value);
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  };
+  validation = () => {
+    let isError = false;
+    const error = this.state;
+    error.emailaddressError = this.state.emailaddress === "" ? true : false;
+    error.passwordError = this.state.passWord === "" ? true : false;
+    this.setState({
+      ...error,
+    });
+    return (isError = error.emailaddressError || error.passwordError);
+  };
+  next = () => {
+    let data = {
+      email: this.state.emailaddress,
+      password: this.state.passWord,
     };
-    next = () => {
-      let data = {
-        
-        "email":"anjirajardula@gmail.com",
-        "password":"12345"
-        
-      }
-      axios.post("http://fundoonotes.incubation.bridgelabz.com/api/user/login",data)
-      .then((res)=>{
+    userService
+      .Login(data)
+      .then((res) => {
         console.log(res);
+        localStorage.setItem("token", res.data.id);
+        let id = localStorage.setItem("token", res.data.id);
+        console.log(id);
       })
-      .catch(()=>{
-  
-      })
-      var validated = this.validation();
-      if (validated) {
-        console.log("Validation Completed");
-      } else {
-        console.log("somethingmissing");
-      }
-    };
+      .catch(() => {});
+    var validated = this.validation();
+    if (validated) {
+      console.log("Validation Completed");
+    } else {
+      console.log("somethingmissing");
+    }
+  };
   render() {
     return (
       <div className="login-main-page">
@@ -81,10 +84,13 @@ export class Login extends Component {
               onChange={(e) => this.changeHandle(e)}
             />
           </div>
+          <span className="row2-text">
+            <Link to="/forget">Forgot email?</Link>
+          </span>
 
           <div className="password">
             <TextField
-            name="passWord"
+              name="passWord"
               id="Password"
               label="Password"
               variant="outlined"
@@ -92,9 +98,7 @@ export class Login extends Component {
               size="small"
               fullWidth
               error={this.state.passwordError}
-              helperText={
-                this.state.passwordError ? "password required" : " "
-              }
+              helperText={this.state.passwordError ? "password required" : " "}
               onChange={(e) => this.changeHandle(e)}
             />
           </div>
@@ -103,13 +107,20 @@ export class Login extends Component {
           <h5 className="not">
             Not your computer? Use Guest mode to sign in privately.
           </h5>
-          <a href=""  id="more"  className="learn">Learn more</a>
+          <a href="" id="more" className="learn">
+            Learn more
+          </a>
         </div>
         <div className="fourth-content">
-          <a href="" className="learn">Create account</a>
+          <Link to="/">
+            {" "}
+            <p>Create account ?</p>
+          </Link>
           <div>
             {" "}
-            <button id="next" onClick={this.next}>Next</button>
+            <button id="next" onClick={this.next}>
+              Next
+            </button>
           </div>
         </div>
       </div>

@@ -11,7 +11,7 @@
   padding: 10px 20px;
 }
 .second-content {
-  margin-bottom: 15px;
+  margin-bottom: px;
 }
 
 .third-content {
@@ -46,6 +46,15 @@
 }
 .create {
   color: blue;
-  font-size: px;
+  font-size: 5px;
   text-decoration: none;
+}
+.row2-text {
+  padding-right: 250px;
+  padding-bottom: 200px;
+}
+@media only screen and (max-width: 700px) {
+  .login-main-page {
+    height: auto;
+  }
 }

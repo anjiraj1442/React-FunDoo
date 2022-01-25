@@ -7,6 +7,10 @@ import Button from "@mui/material/Button";
 import "./SignUp.scss";
 import logo from "../../images/logo.png";
 import axios from "axios";
+import { Link } from "react-router-dom";
+
+import UserService from "../../servises/UserService";
+const userService = new UserService();
 
 export class SignUp extends Component {
   constructor(props) {
@@ -20,9 +24,8 @@ export class SignUp extends Component {
       emailAddressError: "",
       PassWord: "",
       PassWordError: "",
-      confirmPassword:"",
-      confirmpasswordError:"",
-
+      confirmPassword: "",
+      confirmpasswordError: "",
     };
   }
   changeHandle = (e) => {
@@ -38,7 +41,8 @@ export class SignUp extends Component {
     error.lastnameError = this.state.lastName === "" ? true : false;
     error.emailAddressError = this.state.emailAddress === "" ? true : false;
     error.PassWordError = this.state.PassWord === "" ? true : false;
-    error.confirmpasswordError = this.state.confirmPassword === "" ? true : false;
+    error.confirmpasswordError =
+      this.state.confirmPassword === "" ? true : false;
     this.setState({
       ...error,
     });
@@ -47,24 +51,23 @@ export class SignUp extends Component {
       error.lastnameError ||
       error.emailAddressError ||
       error.PassWordError ||
-      error.confirmpasswordError );
+      error.confirmpasswordError);
   };
 
   next = () => {
     let data = {
-      "firstName":"anji",
-      "lastName":"raj",
-      "email":"anjirajardula1@gmail.com",
-      "password":"123456",
-      "service":"advance"
-    }
-    axios.post("http://fundoonotes.incubation.bridgelabz.com/api/user/userSignUp",data)
-    .then((res)=>{
-      console.log(res);
-    })
-    .catch(()=>{
-
-    })
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      email: this.state.emailAddress,
+      password: this.state.PassWord,
+      service: "advance",
+    };
+    userService
+      .Registeration(data)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch(() => {});
     var validated = this.validation();
     if (validated) {
       console.log("Validation Completed");
@@ -92,6 +95,7 @@ export class SignUp extends Component {
             <div className="text-field">
               <div className="fname">
                 <TextField
+                  required
                   name="firstName"
                   id="firstname"
                   label="First Name"
@@ -106,6 +110,7 @@ export class SignUp extends Component {
               </div>
               <div className="lname">
                 <TextField
+                  required
                   name="lastName"
                   id="lastname"
                   label="Last Name"
@@ -121,10 +126,11 @@ export class SignUp extends Component {
             </div>
             <div className="Email">
               <TextField
+                required
                 name="emailAddress"
                 id="email"
                 label="Email"
-                type="password"
+                type="te"
                 variant="outlined"
                 helperText="You can use letters,numbers and periods"
                 fullWidth
@@ -141,6 +147,7 @@ export class SignUp extends Component {
             <div className="data">
               <div>
                 <TextField
+                  required
                   name="PassWord"
                   id="password"
                   label="Password"
@@ -156,6 +163,7 @@ export class SignUp extends Component {
               </div>
               <div className="cpassword">
                 <TextField
+                  required
                   name="confirPmassword"
                   id="confirmpassword"
                   label="Confirm Password"
@@ -163,7 +171,9 @@ export class SignUp extends Component {
                   variant="outlined"
                   error={this.state.confirmpasswordError}
                   helperText={
-                    this.state.confirmpasswordError ? " Confirm Password required" : " "
+                    this.state.confirmpasswordError
+                      ? " Confirm Password required"
+                      : " "
                   }
                   onChange={(e) => this.changeHandle(e)}
                 />
@@ -181,11 +191,9 @@ export class SignUp extends Component {
 
           <div className="next">
             <div className="use_email">
-              {" "}
-              <a id="link" href="">
-                {" "}
-                Sign in instead{" "}
-              </a>
+              <Link to="/login">
+                <p>Sign in instead</p>{" "}
+              </Link>
             </div>
             <Button variant="contained" onClick={this.next}>
               Next
