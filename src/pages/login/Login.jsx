@@ -117,10 +117,10 @@ export class Login extends Component {
             <p>Create account ?</p>
           </Link>
           <div>
-            {" "}
+          <Link to="/dashboard">
             <button id="next" onClick={this.next}>
               Next
-            </button>
+            </button></Link>
           </div>
         </div>
       </div>

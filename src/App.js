@@ -5,7 +5,7 @@ import Login from "./pages/login/Login";
 import ForgotPass from "./pages/ForgotPass/ForgotPass";
 import SignUp from "./pages/Registration/SignUp";
 import ResetPassword from "./pages/resetpassword/ResetPasswod";
-
+import dashboard from "./pages/dashboard/Dashboard"
 function App() {
   return (
     <div className="App">
@@ -13,8 +13,8 @@ function App() {
         <Switch>
           <Route path="/" component={SignUp} exact />
           <Route path="/login" component={Login} />
-
-          <Route path="/ForgotPass" component={ForgotPass} />
+          <Route path='/dashboard' component={dashboard} />
+          <Route path="/forget" component={ForgotPass} />
           <Route path="/ResetPassword" component={ResetPassword} />
         </Switch>
       </BrowserRouter>

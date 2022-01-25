@@ -55,6 +55,15 @@ export class SignUp extends Component {
   };
 
   next = () => {
+    // userService.Testing()
+    // .then((res)=>{
+    //  console.log("response",res);
+    // })
+    // .catch(()=>{
+
+    // })
+    
+
     let data = {
       firstName: this.state.firstName,
       lastName: this.state.lastName,
