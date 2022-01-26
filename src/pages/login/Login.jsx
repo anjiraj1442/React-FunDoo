@@ -77,6 +77,7 @@ export class Login extends Component {
               helperText="Forgot Email?"
               size="small"
               fullWidth
+              
               error={this.state.emailaddressError}
               helperText={
                 this.state.emailaddressError ? "email or phone required" : " "
@@ -102,6 +103,10 @@ export class Login extends Component {
               onChange={(e) => this.changeHandle(e)}
             />
           </div>
+          <span className="row2-text">
+            <Link to="/ResetPassword">Forgot Password?</Link>
+          </span>
+
         </div>
         <div className="third-content">
           <h5 className="not">

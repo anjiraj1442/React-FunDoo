@@ -16,7 +16,7 @@ class UserService {
     return axiosService.PostService(`${baseUrl}forgotpassword`, data);
   }
   Reset(data) {
-    return axiosService.PostService(`${baseUrl}user/reset-password`, data);
+    return axiosService.PostService(`${baseUrl}resetpassword`, data);
   }
 }
 

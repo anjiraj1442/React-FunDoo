@@ -69,6 +69,7 @@
 }
 .data {
   display: flex;
+  
   margin: 20px 0px;
 }
 .image {
@@ -97,4 +98,10 @@
   .Signup-container {
     height: auto;
   }
+  .data{
+    display: flex;
+    flex-direction: column;
+  }
 }
+
+
