@@ -1,0 +1,60 @@
+.takenote-bar{
+     width: 600px;
+     height: 50px;
+     display: flex;
+     flex-direction: row;
+     margin: 0 auto;
+     border-color: #e0e0e0;
+     border: 2px solid #dadce0;
+     box-shadow:0 1px 1px 1px rgb(201, 195, 195) ; 
+     border-radius: 5px;
+     font-weight: 300;
+     
+     display: flex;
+     .bar-icons{
+         width: 30%;
+         display: flex;
+         align-items: center;
+         justify-content: space-around;
+        
+         
+     }
+     .takenote{
+         width: 70%;
+         display: flex;
+         align-items: center;
+        font-weight: bold;
+        padding-left: 10px;
+        
+     }
+ }
+ .open-notebar{
+     width:600px;
+     box-shadow:0 1px 1px 1px rgb(201, 195, 195) ; 
+     border-color: #e0e0e0;
+     border: 2px solid #dadce0;
+     
+     border-radius: 5px;
+     font-weight: 300;
+     
+     display: flex;
+     margin: 0 auto;
+     flex-direction: column;
+     .titlediv{
+          display: flex;
+          align-items: center;
+          flex-direction: row;
+          
+          height: 40px;
+     .title{
+         height: 40px;
+        
+         #titletext{
+             height: 40px;
+            text-align: left;
+         }
+     }
+
+     }
+     
+ }

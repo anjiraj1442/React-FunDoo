@@ -11,8 +11,8 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Switch>
-          <Route path="/" component={SignUp} exact />
-          <Route path="/login" component={Login} />
+          <Route path="/" component={Login} exact />
+          <Route path="/register" component={SignUp} />
           <Route path='/dashboard' component={dashboard} />
           <Route path="/forget" component={ForgotPass} />
           <Route path="/ResetPassword" component={ResetPassword} />

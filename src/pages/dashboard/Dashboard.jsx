@@ -1,7 +1,7 @@
 import * as React from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import "../dashboard/Dashboard.scss";
-import takenote from '../../components/takenote/Takenote'
+
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar from "@mui/material/AppBar";
@@ -26,6 +26,10 @@ import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import AppsOutlinedIcon from "@mui/icons-material/AppsOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import keep from '../../images/keep.png'
+import Takenote from '../../components/takenote/Takenote'
+import Displaynote from "../../components/displaynote/Displaynote";
+import SearchIcon from '@mui/icons-material/Search';
+
 
 
 
@@ -130,6 +134,7 @@ export default function MiniDrawer() {
   const handleDrawerOpen = () => {
     setOpen(!open);
   };
+   
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -155,6 +160,7 @@ export default function MiniDrawer() {
           
           </div>
           <div class="search-bar">
+          <div className="logosearch">< SearchIcon/></div>
             <input
               className="input-search"
               type="text"
@@ -183,10 +189,12 @@ export default function MiniDrawer() {
         </List>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      <Typography  >
         <DrawerHeader />
-        <takenote />
-        <Typography paragraph></Typography>
-        <Typography paragraph></Typography>
+       
+        <Takenote/>
+        <Displaynote/>
+        </Typography> 
       </Box>
     </Box>
   );

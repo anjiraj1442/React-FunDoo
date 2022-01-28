@@ -108,7 +108,7 @@ export class SignUp extends Component {
                   name="firstName"
                   id="firstname"
                   label="First Name"
-                  type="password"
+                  type="text"
                   variant="outlined"
                   error={this.state.firstnameError}
                   helperText={
@@ -123,7 +123,7 @@ export class SignUp extends Component {
                   name="lastName"
                   id="lastname"
                   label="Last Name"
-                  type="password"
+                  type="text"
                   variant="outlined"
                   error={this.state.lastnameError}
                   helperText={
@@ -139,7 +139,7 @@ export class SignUp extends Component {
                 name="emailAddress"
                 id="email"
                 label="Email"
-                type="te"
+                type="text"
                 variant="outlined"
                 helperText="You can use letters,numbers and periods"
                 fullWidth
@@ -200,7 +200,7 @@ export class SignUp extends Component {
 
           <div className="next">
             <div className="use_email">
-              <Link to="/login">
+              <Link to="/">
                 <p>Sign in instead</p>{" "}
               </Link>
             </div>

@@ -117,7 +117,7 @@ export class Login extends Component {
           </a>
         </div>
         <div className="fourth-content">
-          <Link to="/">
+          <Link to="/register">
             {" "}
             <p>Create account ?</p>
           </Link>
