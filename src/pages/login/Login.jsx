@@ -40,9 +40,8 @@ export class Login extends Component {
       .Login(data)
       .then((res) => {
         console.log(res);
-        localStorage.setItem("token", res.data.id);
-        let id = localStorage.setItem("token", res.data.id);
-        console.log(id);
+        localStorage.setItem("token", res.data.token);
+      
       })
       .catch(() => {});
     var validated = this.validation();

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import "../dashboard/Dashboard.scss";
-
+import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar from "@mui/material/AppBar";
@@ -25,14 +25,14 @@ import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import AppsOutlinedIcon from "@mui/icons-material/AppsOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import keep from '../../images/keep.png'
-import Takenote from '../../components/takenote/Takenote'
+import keep from "../../images/keep.png";
+import Takenote from "../../components/takenote/Takenote";
 import Displaynote from "../../components/displaynote/Displaynote";
-import SearchIcon from '@mui/icons-material/Search';
-
-
-
-
+import SearchIcon from "@mui/icons-material/Search";
+import Notes from "../notes/Notes";
+import { useNavigate } from "react-router-dom";
+import Popover from "@mui/material/Popover";
+import PersonAddAltOutlinedIcon from "@mui/icons-material/PersonAddAltOutlined";
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -69,6 +69,7 @@ const AppBar = styled(MuiAppBar, {
 })(({ theme, open }) => ({
   zIndex: theme.zIndex.drawer + 1,
   backgroundColor: "white",
+
   boxShadow: "0px",
   border: "1px solid lightgray",
   color: "black",
@@ -104,7 +105,25 @@ const Drawer = styled(MuiDrawer, {
 
 export default function MiniDrawer() {
   const theme = useTheme();
+
   const [open, setOpen] = React.useState(false);
+  React.useEffect(() => {
+    if (!localStorage.getItem("token")) {
+      <Link href="/"></Link>;
+    }
+  }, []);
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const opens = Boolean(anchorEl);
+  const id = opens ? "simple-popover" : undefined;
   let iconlist = [
     {
       icons: <LightbulbOutlinedIcon />,
@@ -134,13 +153,12 @@ export default function MiniDrawer() {
   const handleDrawerOpen = () => {
     setOpen(!open);
   };
-   
 
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
-        <Toolbar class="headbar">
+        <Toolbar className="headbar">
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -149,18 +167,18 @@ export default function MiniDrawer() {
           >
             <MenuIcon />
           </IconButton>
-          
+
           <div className="keepword">
-          <img  src={keep} alt="this is keep"></img>
-          
-          <Typography variant="h6" noWrap component="div">
-            Keep
-          </Typography>
-            
-          
+            <img src={keep} alt="this is keep"></img>
+
+            <Typography variant="h6" noWrap component="div">
+              Keep
+            </Typography>
           </div>
-          <div class="search-bar">
-          <div className="logosearch">< SearchIcon/></div>
+          <div className="search-bar">
+            <div className="logosearch">
+              <SearchIcon />
+            </div>
             <input
               className="input-search"
               type="text"
@@ -172,7 +190,39 @@ export default function MiniDrawer() {
             <ViewStreamOutlinedIcon />
             <SettingsOutlinedIcon />
             <AppsOutlinedIcon />
-            <AccountCircleOutlinedIcon />
+            <AccountCircleOutlinedIcon
+              onClick={handleOpen}
+              variant="contained"
+              aria-describedby={id}
+            />
+            <Popover
+              id={id}
+              open={opens}
+              anchorEl={anchorEl}
+              onClose={handleClose}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "left",
+              }}
+            >
+              <Typography sx={{ p: 2 }}>
+                <div className="accountdetails">
+                  <div className="detail">
+                    <div className="imagedetails"></div>
+
+                    <h4>Anji raj Ardula</h4>
+                    <div>anjirajardula@gmail.com</div>
+                    <div className="manageaccount">Manage your account</div>
+                  </div>
+                  <div className="addaccount">
+                    <div className="logo">
+                      <PersonAddAltOutlinedIcon />
+                      Add another account
+                    </div>
+                  </div>
+                </div>
+              </Typography>
+            </Popover>
           </div>
         </Toolbar>
       </AppBar>
@@ -189,12 +239,11 @@ export default function MiniDrawer() {
         </List>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-      <Typography  >
-        <DrawerHeader />
-       
-        <Takenote/>
-        <Displaynote/>
-        </Typography> 
+        <Typography>
+          <DrawerHeader />
+
+          <Notes />
+        </Typography>
       </Box>
     </Box>
   );

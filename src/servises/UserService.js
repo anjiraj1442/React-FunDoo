@@ -1,7 +1,12 @@
 import AxiosService from "./AxioService";
 
 const axiosService = new AxiosService();
-let baseUrl = "http://localhost:3636/";
+let baseUrl = "http://localhost:4646/";
+const header = {
+  headers: {
+      token: localStorage.getItem("token"),
+  },
+}
 class UserService {
 //    Testing(data) {
 //         return axiosService.PostService(`${baseUrl}testapi`, data);
@@ -13,7 +18,7 @@ class UserService {
     return axiosService.PostService(`${baseUrl}login`, data);
   }
   Forget(data) {
-    return axiosService.PostService(`${baseUrl}forgotpassword`, data);
+    return axiosService.PostService(`${baseUrl}forgotpassword`, data,header);
   }
   Reset(data) {
     return axiosService.PostService(`${baseUrl}resetpassword`, data);

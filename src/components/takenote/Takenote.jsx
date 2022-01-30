@@ -7,19 +7,42 @@ import TextareaAutosize from "@mui/material/TextareaAutosize";
 import PushPinIcon from "@mui/icons-material/PushPin";
 import Icons from "../icons/Icons";
 import { Input } from "@mui/material";
-
-function Takenote() {
+import NoteService from "../../servises/NoteService";
+ const Notes = new NoteService()
+function Takenote(props) {
   const [takenote, setTakenote] = useState(true);
-  const [fieldarea, setField]= useState({
-    titile:"",
-    description:"",
+  const [field, setField] = useState({
+    title: '',
+    description: '',
+    isArchieved: '',
+    isDeleted: '',
+    color: ''
+})
+const changeField = (e) => {
+  setField((previousstate) => {
+      return { ...previousstate, [e.target.name]: e.target.value }
   })
-  const changeFieldarea = (e) => {
-    setTakenote(false);
-  };
+}
+  const close = ()=>{
+    let data = {
+      "title":field.title,
+      "desriprtion":field.description,
+      "isArchieved": false,
+      "isDeleted":false,
+      "color": field.color,
+    }
+    setTakenote(true)
+    Notes.addnotes(data).then((res)=>{
+        props.getNotes()
+    //  console.log(res,"succesfully added")
+    }).catch((err) => {
+      console.log(err,"error");
+
+  })
+  }
   return (
     <div>
-      {takenote ? (
+      {takenote ? 
         <div className="takenote-bar" onClick={() => setTakenote(false)}>
           <div className="takenote">Take a note...</div>
           <div className="bar-icons">
@@ -34,33 +57,21 @@ function Takenote() {
             </div>
           </div>
         </div>
-      ) : (
-        <div className="open-notebar">
-          <div className="titlediv">
-            <div className="title">
-              <TextareaAutosize
-                id="titletext"
-                rows="1"
-                cols="50"
-                name="description"
-              >
-                Title
-              </TextareaAutosize>
+       : 
+       <div className='bar-input' >
+                <div> <TextareaAutosize name="title" className='text-area' placeholder="Title" rows="1" cols="50" onChange={(e) => changeField(e)} >
+                    
+                </TextareaAutosize></div>
+                <div> <textarea name="description" className='text-area'placeholder="Add text" rows="5" cols="50" onChange={(e) => changeField(e)} >
+                    
+                </textarea></div>
+                <div className='close-button'>
+                    <Icons className='icons-set' />
+                    <button className='button-icon' onClick={() => close()}>close</button>
+                </div>
+
             </div>
-            <div className="titleicon"><PushPinIcon/></div>
-          </div>
-          <div className="textarea">
-            {" "}
-            <textarea id="textarea" rows="5" cols="50" name="description">
-              Add text
-            </textarea>
-          </div>
-          <div className="open">
-            <Icons />
-          </div>
-          <button onClick={() => setTakenote(true)}>close</button>
-        </div>
-      )}
+      }
     </div>
   );
 }

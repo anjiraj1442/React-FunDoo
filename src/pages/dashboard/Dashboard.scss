@@ -9,8 +9,8 @@ $icon1Color: #4e4747;
   border-radius: 5px;
   background-color: #e9eef1;
 }
-.logosearch{
-    margin: 10px;
+.logosearch {
+  margin: 10px;
 }
 
 @mixin searchBar {
@@ -22,7 +22,6 @@ $icon1Color: #4e4747;
   width: 60%;
   height: 45px;
   border-radius: 5px;
- 
 }
 .headbar {
   display: flex;
@@ -48,6 +47,7 @@ $icon1Color: #4e4747;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: #817a7a;
 }
 .keeplogo {
   margin-left: -40px;
@@ -56,4 +56,40 @@ $icon1Color: #4e4747;
   display: flex;
 
   margin-left: -40px;
+}
+.accountdetails {
+  width: 350px;
+
+  .detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .manageaccount {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    height: 30px;
+    border: 1px solid;
+    border-radius: 4px;
+    margin-top: 5%;
+  }
+  .imagedetails {
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    border: 1px solid;
+  }
+  .addaccount {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    .logo {
+      width: 60%;
+      display: flex;
+      justify-content: center;
+      border: 1px solid;
+    }
+  }
 }
