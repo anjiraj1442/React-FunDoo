@@ -31,7 +31,7 @@ export default function Notes() {
   return (
     <div>
       <Takenote getNotes={getNotes} />
-      <Displaynote noteArr={noteArr} getNote={getNotes}/>
+      <Displaynote noteArr={noteArr} getNote={getNotes} />
     </div>
   );
 }

@@ -12,21 +12,22 @@ export class Reserpassword extends Component {
     this.state = {
       Newpassword: "",
       NewpasswordError: "",
-      ConfirmPassWord:"",
-      ConfirmPassWordError:"",
+      ConfirmPassWord: "",
+      ConfirmPassWordError: "",
     };
   }
   changeHandle = (e) => {
     console.log(e.target.value);
     this.setState({
-      [e.target.name]: e.target.value,//grab the things dynamically
+      [e.target.name]: e.target.value, //grab the things dynamically
     });
   };
   validation = () => {
     let isError = false;
     const error = this.state;
     error.NewpasswordError = this.state.Newpassword === "" ? true : false;
-    error.ConfirmPassWordError = this.state.ConfirmPassWord === "" ? true : false;
+    error.ConfirmPassWordError =
+      this.state.ConfirmPassWord === "" ? true : false;
     this.setState({
       ...error,
     });
@@ -34,18 +35,14 @@ export class Reserpassword extends Component {
   };
   next = () => {
     let data = {
-       
-      "password":this.state.Newpassword
-      
-    }
+      password: this.state.Newpassword,
+    };
     userService
       .Reset(data)
-    .then((res)=>{
-      console.log(res);
-    })
-    .catch(()=>{
-
-    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch(() => {});
     var validated = this.validation();
     if (validated) {
       console.log("Validation Completed");

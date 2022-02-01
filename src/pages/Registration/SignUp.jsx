@@ -62,7 +62,6 @@ export class SignUp extends Component {
     // .catch(()=>{
 
     // })
-    
 
     let data = {
       firstName: this.state.firstName,

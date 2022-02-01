@@ -41,7 +41,6 @@ export class Login extends Component {
       .then((res) => {
         console.log(res);
         localStorage.setItem("token", res.data.token);
-      
       })
       .catch(() => {});
     var validated = this.validation();
@@ -76,7 +75,6 @@ export class Login extends Component {
               helperText="Forgot Email?"
               size="small"
               fullWidth
-              
               error={this.state.emailaddressError}
               helperText={
                 this.state.emailaddressError ? "email or phone required" : " "
@@ -105,7 +103,6 @@ export class Login extends Component {
           <span className="row2-text">
             <Link to="/ResetPassword">Forgot Password?</Link>
           </span>
-
         </div>
         <div className="third-content">
           <h5 className="not">
@@ -121,10 +118,11 @@ export class Login extends Component {
             <p>Create account ?</p>
           </Link>
           <div>
-          <Link to="/dashboard">
-            <button id="next" onClick={this.next}>
-              Next
-            </button></Link>
+            <Link to="/dashboard">
+              <button id="next" onClick={this.next}>
+                Next
+              </button>
+            </Link>
           </div>
         </div>
       </div>

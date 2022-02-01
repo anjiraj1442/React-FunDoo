@@ -15,7 +15,6 @@ function Takenote(props) {
   const [field, setField] = useState({
     title: "",
     description: "",
-   
   });
   const [changecolor, setChangecolor] = useState("");
   const backgroundcolor = (data) => {

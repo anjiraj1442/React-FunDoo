@@ -1,70 +1,68 @@
-.container{
-    background-color: #fff;
-    border-color: #e0e0e0;
-    border: 1px solid #dadce0;
-    border-radius: 8px;
-    width: 240px;
-    min-height: auto;
-   float: left;
-    margin-left: 50px;
-    margin-top: 20px;
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    border: 2px solid #dadce0;
-    box-shadow:0 1px 1px 1px rgb(201, 195, 195) ; 
-    padding-left: 5px;
-    .title{
-        width:100%;
-        padding-left:10px;
-        word-wrap: break-word;
-        padding-right: 12px;
-        padding-top: 5px;
-    }
-    .notes{
-        width:100%;
-        padding-left:10px;
-        word-wrap: break-word;
-        padding-right: 12px;
-        padding-bottom: 10px;
-    }
+.container {
+  background-color: #fff;
+  border-color: #e0e0e0;
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  width: 240px;
+  min-height: auto;
+  float: left;
+  margin-left: 50px;
+  margin-top: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border: 2px solid #dadce0;
+  box-shadow: 0 1px 1px 1px rgb(201, 195, 195);
+  padding-left: 5px;
+  .title {
+    width: 100%;
+    padding-left: 10px;
+    word-wrap: break-word;
+    padding-right: 12px;
+    padding-top: 5px;
+  }
+  .notes {
+    width: 100%;
+    padding-left: 10px;
+    word-wrap: break-word;
+    padding-right: 12px;
+    padding-bottom: 10px;
+  }
 }
-button-icon{
-    background-color: #ffffff;
+button-icon {
+  background-color: #ffffff;
+  border: none;
+}
+.modal-input {
+  display: flex;
+  flex-direction: column;
+  padding-left: 5%;
+  .title-modal {
     border: none;
+    outline: none;
+    height: 30px;
+  }
+  .description-modal {
+    border: none;
+    outline: none;
+  }
 }
-.modal-input{
-    display: flex;
-    flex-direction: column;
-    padding-left: 5%;
-    .title-modal{
-        border: none;
-        outline: none;
-        height: 30px;
-    }
-    .description-modal{
-        border: none;
-        outline: none;
-    }
-    
+.modal-icons {
+  display: flex;
+  margin-top: 5%;
 }
-.modal-icons{
-    display: flex;
-    margin-top: 5%;
+.displaynote-container {
+  display: flex;
+  flex-wrap: wrap;
 }
-.displaynote-container{
-    display: flex;
-    flex-wrap: wrap;
-}
-.displaynote-container >div{
-    margin:10px
+.displaynote-container > div {
+  margin: 10px;
 }
 
-@media screen and (max-width : 430px) {
-    .displaynote-container{
-        display: flex;
-        flex-direction: column;
-        
-    }
+@media screen and (max-width: 430px) {
+  .displaynote-container {
+    display: flex;
+    flex-direction: column;
+  }
 }
