@@ -8,29 +8,30 @@ export default function Notes() {
   const [noteArr, setNotearr] = useState([]);
   // console.log(noteArr);
   React.useEffect(() => {
-     //whn we refresh grab the values
+    //whn we refresh grab the values
     //  console.log("hi");
-     getNotes();
-   },[]);
+    getNotes();
+  }, []);
 
   const getNotes = () => {
     NotesObject.getnotes()
       .then((res) => {
-         
+        console.log(res);
 
         setNotearr(res.data.data);
-        // console.log(res.data.data,"check");
+        // console.log(noteArr);
+        // console.log(res.data.data, "check");
         // console.log("succes");
       })
       .catch((err) => {
         console.log("not getting", err);
       });
   };
- 
-  return <div>
-    
+
+  return (
+    <div>
       <Takenote getNotes={getNotes} />
-      {/* <Displaynote noteArr={noteArr} /> */}
+      <Displaynote noteArr={noteArr} getNote={getNotes}/>
     </div>
-  
+  );
 }

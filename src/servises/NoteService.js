@@ -14,6 +14,12 @@ class NoteService{
      getnotes(){
           return axiosService.getNoteServive(`${baseUrl}/notes/getnotes`,headerconfig)
      }
+     updatenotes(data){
+          return axiosService.updateService(`${baseUrl}/notes`,data,headerconfig)
+     }
+     getisArchieved(){
+          return AxiosService.getNotes(`${baseUrl}notes/isArchieved`,headerconfig)
+     }
 
 }
 export default NoteService

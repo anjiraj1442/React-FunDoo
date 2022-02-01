@@ -58,8 +58,8 @@ $icon1Color: #4e4747;
   margin-left: -40px;
 }
 .accountdetails {
-  width: 350px;
-
+  width: 320px;
+  border-radius: 2px;
   .detail {
     display: flex;
     flex-direction: column;
@@ -85,11 +85,13 @@ $icon1Color: #4e4747;
     display: flex;
     justify-content: center;
     margin-top: 20px;
+    border-radius: 2px;
     .logo {
       width: 60%;
       display: flex;
       justify-content: center;
       border: 1px solid;
+      border-radius: 4px;
     }
   }
 }

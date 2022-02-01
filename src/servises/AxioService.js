@@ -10,6 +10,9 @@ class AxiosService {
   getNoteServive(url,header=false){
     return axios.get(url,header);
   }
+  updateService(url,data,header){
+    return axios.put(url,data,header)
+  }
 }
 
 export default AxiosService;
