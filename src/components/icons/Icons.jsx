@@ -55,7 +55,7 @@ function Icons(props) {
       };
       Notes.updatenotes(dataa)
         .then((result) => {
-          props.modone();
+          props.modeone();
         })
         .catch((err) => {
           console.log(err);

@@ -17,8 +17,9 @@ export default function Notes() {
     NotesObject.getnotes()
       .then((res) => {
         console.log(res);
-
-        setNotearr(res.data.data);
+ //filter condirtion and is archiove not equal in varaia ble in set note array
+ let filterData= res.data.data.filter(data=>data.isArchieved!==true && data.isDeleted!==true)
+ setNotearr(filterData)
         // console.log(noteArr);
         // console.log(res.data.data, "check");
         // console.log("succes");
@@ -31,7 +32,7 @@ export default function Notes() {
   return (
     <div>
       <Takenote getNotes={getNotes} />
-      <Displaynote noteArr={noteArr} getNote={getNotes} />
+      <Displaynote className='Notes-container' noteArr={noteArr} mode='notes'  getNote={getNotes} />
     </div>
   );
 }

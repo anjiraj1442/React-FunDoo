@@ -1,11 +1,16 @@
 import React, { Component } from "react";
 import "../login/Login.css";
+import { Navigate, Redirect } from "react-router-dom";
 import { TextField } from "@material-ui/core";
 import axios from "axios";
+
 import { Link } from "react-router-dom";
 import UserService from "../../servises/UserService";
+
 const userService = new UserService();
+
 export class Login extends Component {
+  
   constructor(props) {
     super(props);
     this.state = {
@@ -15,6 +20,7 @@ export class Login extends Component {
       passwordError: "",
     };
   }
+
   changeHandle = (e) => {
     console.log(e.target.value);
     this.setState({
@@ -32,24 +38,30 @@ export class Login extends Component {
     return (isError = error.emailaddressError || error.passwordError);
   };
   next = () => {
-    let data = {
-      email: this.state.emailaddress,
-      password: this.state.passWord,
-    };
-    userService
-      .Login(data)
-      .then((res) => {
-        console.log(res);
-        localStorage.setItem("token", res.data.token);
-      })
-      .catch(() => {});
     var validated = this.validation();
-    if (validated) {
+    if (!validated) {
+      
       console.log("Validation Completed");
-    } else {
-      console.log("somethingmissing");
-    }
-  };
+      let data = {
+        email: this.state.emailaddress,
+        password: this.state.passWord,
+      };
+      userService
+        .Login(data)
+        .then((res) => {
+          localStorage.setItem("token", res.data.token);
+          localStorage.setItem("id", res.data.userId);
+          console.log(res);
+          //  console.log(res.data.data.userId);
+         //navigate('/')
+        })
+        .catch((err) => {
+          console.log("error", err);
+        });
+         
+    };
+    } 
+    
   render() {
     return (
       <div className="login-main-page">
@@ -118,7 +130,7 @@ export class Login extends Component {
             <p>Create account ?</p>
           </Link>
           <div>
-            <Link to="/dashboard">
+            <Link to="/">
               <button id="next" onClick={this.next}>
                 Next
               </button>
@@ -130,4 +142,4 @@ export class Login extends Component {
   }
 }
 
-export default Login;
+export default   Login ;

@@ -1,4 +1,6 @@
 import * as React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import { styled, useTheme } from "@mui/material/styles";
 import "../dashboard/Dashboard.scss";
 import Link from "@mui/material/Link";
@@ -31,8 +33,14 @@ import Displaynote from "../../components/displaynote/Displaynote";
 import SearchIcon from "@mui/icons-material/Search";
 import Notes from "../notes/Notes";
 import { useNavigate } from "react-router-dom";
+
 import Popover from "@mui/material/Popover";
 import PersonAddAltOutlinedIcon from "@mui/icons-material/PersonAddAltOutlined";
+import Archive from "../Archive/Archive";
+import Deleted from "../Deleted/Deleted";
+import NoteService from "../../servises/NoteService";
+const noteService = new NoteService();
+
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -105,13 +113,18 @@ const Drawer = styled(MuiDrawer, {
 
 export default function MiniDrawer() {
   const theme = useTheme();
-
+   const navigate = useNavigate();
+  const [email, setemail] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   React.useEffect(() => {
     if (!localStorage.getItem("token")) {
-      <Link href="/"></Link>;
+       navigate("/login");
     }
   }, []);
+
+  const getuseremail = (mailid) => {
+    setemail(mailid);
+  };
 
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -123,7 +136,7 @@ export default function MiniDrawer() {
     setAnchorEl(null);
   };
   const opens = Boolean(anchorEl);
-  const id = opens ? "simple-popover" : undefined;
+  const id1 = opens ? "simple-popover" : undefined;
   let iconlist = [
     {
       icons: <LightbulbOutlinedIcon />,
@@ -150,10 +163,35 @@ export default function MiniDrawer() {
     },
   ];
 
+  // const signout = () => {
+  //   localStorage.clear();
+  //   // navigate("/signin");
+  // };
+
   const handleDrawerOpen = () => {
     setOpen(!open);
   };
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
 
+  const changeroutes = (icnText) => {
+    switch (icnText) {
+      case "Archive":
+         navigate("/archive");
+        break;
+      case "Notes":
+        navigate("/");
+
+        break;
+      case "Bin":
+         navigate("/trash");
+        break;
+      default:
+         navigate("/");
+        break;
+    }
+  };
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -193,10 +231,10 @@ export default function MiniDrawer() {
             <AccountCircleOutlinedIcon
               onClick={handleOpen}
               variant="contained"
-              aria-describedby={id}
+              aria-describedby={id1}
             />
             <Popover
-              id={id}
+              id={id1}
               open={opens}
               anchorEl={anchorEl}
               onClose={handleClose}
@@ -206,7 +244,7 @@ export default function MiniDrawer() {
               }}
             >
               <Typography sx={{ p: 2 }}>
-                <div className="accountdetails">
+              <div className="accountdetails">
                   <div className="detail">
                     <div className="imagedetails"></div>
 
@@ -231,7 +269,11 @@ export default function MiniDrawer() {
         <Divider />
         <List>
           {iconlist.map((text, index) => (
-            <ListItem button key={text.icnText}>
+            <ListItem
+              button
+              key={text.icnText}
+              onClick={() => changeroutes(text.icnText)}
+            >
               <ListItemIcon>{text.icons}</ListItemIcon>
               <ListItemText primary={text.icnText} />
             </ListItem>
@@ -239,10 +281,15 @@ export default function MiniDrawer() {
         </List>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <Typography>
-          <DrawerHeader />
+        <DrawerHeader />
 
-          <Notes />
+        <Typography className="content-note" component="span">
+          <Routes>
+            <Route exact path="/" element={<Notes />} />
+            <Route exact path="/archive" element={<Archive />} />
+            <Route exact path="/trash" element={<Deleted />} />
+          </Routes>
+          
         </Typography>
       </Box>
     </Box>

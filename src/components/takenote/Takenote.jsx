@@ -39,22 +39,27 @@ function Takenote(props) {
       color: changecolor,
     };
     setTakenote(true);
-    Notes.addnotes(data)
-      .then((res) => {
-        props.getNotes();
-        setField({
-          title: "",
-          description: "",
+    if (field.title != "" && field.description != "") {
+      Notes.addnotes(data)
+        .then((res) => {
+          
+          console.log("hi");
+          props.getNotes();
+          setField({
+            title: "",
+            description: "",
+            
+          });
+          //  setChangecolor("#FFFFFF");
+          //  console.log(res,"succesfully added")
+        })
+        .catch((err) => {
+          console.log(err, "error");
         });
-        //  console.log(res,"succesfully added")
-      })
-      .catch((err) => {
-        console.log(err, "error");
-      });
-    setChangecolor("#FFFFFF");
+    }
   };
   return (
-    <div>
+    <div className="totalcontainer">
       {takenote ? (
         <div className="takenote-bar" onClick={() => setTakenote(false)}>
           <div className="takenote">Take a note...</div>

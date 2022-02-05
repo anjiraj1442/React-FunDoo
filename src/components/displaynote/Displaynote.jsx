@@ -28,7 +28,8 @@ function Displaynote(props) {
     color: "#ffffff",
   });
   const changeColor = () => {
-    props.getnotes();
+    console.log("first");
+    props.getNote(); //spelling mistake
   };
   const archieveChange = (id) => {
     let data = {
@@ -37,7 +38,7 @@ function Displaynote(props) {
     };
     Noteservice.updatenotes(data)
       .then((result) => {
-        props.getnotes();
+        props.getNote();
       })
       .catch((err) => {
         console.log(err);
@@ -51,7 +52,7 @@ function Displaynote(props) {
     Noteservice.updatenotes(data)
       .then((result) => {
         console.log("hi");
-        props.getnote();
+        props.getNote();
       })
       .catch((err) => {});
   };
@@ -71,14 +72,13 @@ function Displaynote(props) {
     console.log(id, dialognotes._id, "inside closeeee");
     setOpen(false);
     let data = {
-      // '_id':dialognotes._id,
       _id: id,
       title: dialognotes.title,
       description: dialognotes.description,
     };
     Noteservice.updatenotes(data)
       .then((result) => {
-        props.getnote();
+        props.getNote();
       })
       .catch((err) => {});
   };
@@ -106,30 +106,33 @@ function Displaynote(props) {
   return (
     <div>
       {props.noteArr.map((notes, index) => {
-        if (!notes.isArchieved & !notes.isDeleted) {
+        // if (!notes.isArchieved & !notes.isDeleted) { condtion is wrong
           return (
-            <div className="main-display">
+            <div className="main-display" key={index} >
               <div
                 className="container"
                 style={{ backgroundColor: notes.color }}
               >
-                <div onClick={() => handleOpen(notes)}>
-                  <div className="title">{notes.title}</div>
-                  <div className="notes">{notes.description}</div>
+                <div>
+                  <div onClick={() => handleOpen(notes)}>
+                    <div className="title">{notes.title}</div>
+                    <div className="notes">{notes.description}</div>
+                  </div>
+
                   <div className="icons">
                     <Icons
                       mode="display"
                       isdeleteChange={() => isdeleteChange(notes._id)}
                       archieveChange={() => archieveChange(notes._id)}
                       notes={notes}
-                      modeone={changeColor}
+                      modeone={() => changeColor()}
                     />
                   </div>
                 </div>
               </div>
             </div>
           );
-        }
+        // }
       })}
       <Modal open={open} onClose={() => handleClose(notes._id)}>
         <Box
@@ -170,6 +173,7 @@ function Displaynote(props) {
               className="button-icon"
               onClick={() => handleClose(notes)}
               style={{ backgroundColor: notes.color }}
+              getnote={props.getNotes}
             >
               close
             </button>

@@ -1,23 +1,34 @@
 import "./App.css";
 
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Login from "./pages/login/Login";
 import ForgotPass from "./pages/ForgotPass/ForgotPass";
 import SignUp from "./pages/Registration/SignUp";
 import ResetPassword from "./pages/resetpassword/ResetPasswod";
-import dashboard from "./pages/dashboard/Dashboard";
+import Dashboard from "./pages/dashboard/Dashboard";
+import Archive from "./pages/Archive/Archive";
+import Deleted from "./pages/Deleted/Deleted";
+import Notes from "./pages/notes/Notes";
+
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <Switch>
-          <Route path="/" component={Login} exact />
-          <Route path="/register" component={SignUp} />
-          <Route path="/dashboard" component={dashboard} />
-          <Route path="/forget" component={ForgotPass} />
-          <Route path="/ResetPassword" component={ResetPassword} />
-        </Switch>
-      </BrowserRouter>
+      
+        <Router>
+          <Routes>
+            <Route path="/login" element={<Login />}  />
+            <Route path="/register" element={<SignUp />} />
+
+            <Route path="/forget" element={<ForgotPass />} />
+            <Route path="/ResetPassword" element={<ResetPassword />} />
+
+            <Route path="/" element={<Dashboard />}>
+              <Route exact path="/archive" element={<Archive />} />
+              <Route exact path="/trash" element={<Deleted />} />
+            </Route>
+          </Routes>
+        </Router>
+      
     </div>
   );
 }

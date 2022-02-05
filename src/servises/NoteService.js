@@ -22,10 +22,24 @@ class NoteService {
     );
   }
   updatenotes(data) {
-    return axiosService.updateService(`${baseUrl}/notes`, data, headerconfig);
+    return axiosService.updateService(
+      `${baseUrl}/notes/updatenotes`,
+      data,
+      headerconfig
+    );
   }
   getisArchieved() {
-    return AxiosService.getNotes(`${baseUrl}notes/isArchieved`, headerconfig);
+    console.log("first");
+    return axiosService.getNoteServive(
+      `${baseUrl}/notisArchievedes`,
+      headerconfig
+    ); //?spelling
+  }
+  getisDeleted() {
+    return axiosService.getNoteServive(
+      `${baseUrl}/notes/isDeleted`,
+      headerconfig
+    );
   }
 }
 export default NoteService;

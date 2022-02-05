@@ -8,6 +8,7 @@ import "./SignUp.scss";
 import logo from "../../images/logo.png";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import UserService from "../../servises/UserService";
 const userService = new UserService();
@@ -73,6 +74,7 @@ export class SignUp extends Component {
     userService
       .Registeration(data)
       .then((res) => {
+        
         console.log(res);
       })
       .catch(() => {});

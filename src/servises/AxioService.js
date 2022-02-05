@@ -8,6 +8,7 @@ class AxiosService {
     return axios.get(url, data, header);
   }
   getNoteServive(url, header = false) {
+    console.log("hh");
     return axios.get(url, header);
   }
   updateService(url, data, header) {
